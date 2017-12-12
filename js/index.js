@@ -1,29 +1,27 @@
-var Fibonachi = [];
+const maxNumber = parseInt(prompt('Введіть число'));
 
-function count() {
-    return Fibonachi[i] = Fibonachi[i - 1] + Fibonachi[i - 2]
+function loop(maxNumber) {
+    let prev = 1,
+        next = 1;
+    for (let i = 3; i <= maxNumber; i++) {
+        [prev, next] = [next, prev + next]
+    }
+    return next;
 }
+document.write('Цикл ' + loop(maxNumber));
 
-function write() {
-    document.write('<br>');
-    document.write(Fibonachi);
-    document.write('<br>');
+function recurs(maxNumber) {
+    return maxNumber <= 1 ? maxNumber : recurs(maxNumber - 1) + recurs(maxNumber - 2)
+}
+document.write('<br>');
+document.write('Рекурсія ' + recurs(maxNumber));
 
+function array() {
+    let fibonachi = [1, 1];
+    for (let i = 2; i < maxNumber; i++) {
+        fibonachi[i] = fibonachi[i - 1] + fibonachi[i - 2]
+    }
+    return fibonachi.pop()
 }
-Fibonachi.length = prompt("Ведіть число Фібоначі");
-Fibonachi[0] = 1;
-Fibonachi[1] = 1;
-let i = 2;
-//СПОСІБ 1
-while (i < Fibonachi.length) {
-    count();
-    i++
-};
-document.write('Спосіб 1');
-write();
-//СПОСІБ 2
-for (i = 2; i < Fibonachi.length; i++) {
-    count()
-}
-document.write('Спосіб 2');
-write();
+document.write('<br>');
+document.write('Масив ' + array(maxNumber))
